@@ -26,8 +26,8 @@
 [rerere]
 	enabled = true
 	autoUpdate = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
 [user]
 	name = Dragoș Niculescu
 	email = dragos.niculescu@cs.pub.ro
