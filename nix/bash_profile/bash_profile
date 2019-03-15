@@ -20,7 +20,7 @@ fi
 test -s ~/.alias && . ~/.alias || true
 export NO_AT_BRIDGE=1
 
-IGNOREEOF=3
+IGNOREEOF=1
 
 
 
@@ -57,7 +57,7 @@ fi
 # Generic settings by O/S
 
 for p in /usr/local/bin /opt/bin $HOME/bin $HOME/.cargo/bin; do
-    if [ -d $p && echo $PATH | grep -q -v $p ]; then  
+    if [ -d $p ] && echo $PATH | grep -q -v $p; then  
 	export PATH="$p:$PATH"
     fi
 done
@@ -75,7 +75,7 @@ case `uname -s` in
 	alias users="users | tr ' ' \"\n\" | sort -u | tr \"\n\" ' '; echo"
 	export PATH=$PATH:/usr/sbin
 
-	export PS1="\u:\W> "
+	export PS1="\u:\W$ "
 	;;
 
 
