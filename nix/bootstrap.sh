@@ -19,14 +19,18 @@ esac
 
 BASEDIR="$(cd "$SCRIPT_INDIRECT" ; pwd -P)"
 
-for i in "$BASEDIR"/*; do
-    [ ! -d "$i" ] && continue
+for f in $(find "$BASEDIR" -type f -printf "%P\n"); do
+    DIR="$(dirname "$f")"
+    FILE="$(basename "$f")"
+    if [ $DIR = '.' ]; then 
+	BASEFILE="$HOME/$FILE"
+	SRCFILE="$BASEDIR/$FILE"
+    else
+	BASEFILE="$HOME/$DIR/$FILE"
+        SRCFILE="$BASEDIR/$DIR/$FILE"
+    fi
 
-    for j in "$i"/*; do
-        FILEDIR="$(dirname "$j")"
-        FILE="$(basename "$j")"
-        BASEFILE="$HOME/.$FILE"
- 
+	mkdir -p $(dirname "$BASEFILE")
         if [ -h "$BASEFILE" ]; then
            echo "Updating link : $BASEFILE"
            rm "$BASEFILE"
@@ -43,19 +47,22 @@ for i in "$BASEDIR"/*; do
             # to try to handle other things (e.g. unix sockets)
             # specially.
             echo "Replacing file: $BASEFILE"
-            rm "$BASEFILE"
+	    SAVE_NAME="$BASEFILE.dotfiles.sav"
+            if [ -e "$SAVE_NAME" ]; then
+		SAVE_NAME="$SAVE_NAME.$(date +'%s')"
+            fi
+            mv "$BASEFILE" "$SAVE_NAME"
         else
             echo "Creating link: $BASEFILE"
         fi
 
-        ln -s "$j" "$BASEFILE"
-    done
+        ln -s "$SRCFILE" "$BASEFILE"
 done
 
 # Make a pass deleting stale links, if any
 for i in ~/.*; do
     [ ! -h "$i" ] && continue
-
+    
     # We have a link: Is it stale? If so, delete it ...
     # Since we can't use readlink, assume that if the link is
     # not pointing to a file or a directory that it is stale.
