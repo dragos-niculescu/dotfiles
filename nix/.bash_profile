@@ -1,7 +1,3 @@
-# Some applications read the EDITOR variable to determine your favourite text
-# editor. So uncomment the line below and enter the editor of your choice :-)
-#export EDITOR=/usr/bin/vim
-#export EDITOR=/usr/bin/mcedit
 
 EMACS=$(which emacs)
 VIM=$(which vim)
@@ -17,12 +13,7 @@ elif [ -e ${VI} ]; then
     export VISUAL=${VI}
 fi
 
-test -s ~/.alias && . ~/.alias || true
-export NO_AT_BRIDGE=1
-
-IGNOREEOF=1
-
-
+export IGNOREEOF=0
 
 # Save path so, if we re-run ourselves, the path doesn't get needlessly long
 
@@ -42,44 +33,6 @@ else
     export MORE="-is"
 fi
 
-# For 'ls', use colors if we have them (and use LS_OPTIONS if it exists)
-
-if [ $(uname -s) = "Linux" -a -f /etc/SuSE-release ]; then
-    if [ "${LS_OPTIONS}" != "" ]; then
-	export LS_OPTIONS="${LS_OPTIONS} -p"
-    else
-	alias ls="ls -N --color=tty -T 0 -p"
-    fi
-else
-    alias ls="ls -p"
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
 fi
-
-# Generic settings by O/S
-
-for p in /usr/local/bin /opt/bin $HOME/bin $HOME/.cargo/bin; do
-    if [ -d $p ] && echo $PATH | grep -q -v $p; then  
-	export PATH="$p:$PATH"
-    fi
-done
-    
-case `uname -s` in
-
-    Darwin)
-	alias ps-scx="ps -ef | grep cim"
-	alias users="users | tr ' ' \"\n\" | sort -u | tr \"\n\" ' '; echo"
-	;;
-
-
-    Linux)
-	# alias ps-scx="ps aux | egrep \"cim|scx\""
-	alias users="users | tr ' ' \"\n\" | sort -u | tr \"\n\" ' '; echo"
-	export PATH=$PATH:/usr/sbin
-
-	export PS1="\u:\W$ "
-	;;
-
-
-    *)
-	;;
-esac
-
