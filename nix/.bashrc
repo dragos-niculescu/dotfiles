@@ -115,8 +115,7 @@ pwait() {
     done
 }
 
-which xsel && alias pbcopy='xsel --clipboard --input'
-which xsel && alias pbpaste='xsel --clipboard --output'
+which xsel > /dev/null  && alias pbcopy='xsel --clipboard --input' && alias pbpaste='xsel --clipboard --output'
 
 
 
