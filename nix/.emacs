@@ -248,7 +248,8 @@
  '(display-time-mode t)
  '(inferior-octave-program "octave-cli")
  '(inhibit-startup-screen t)
- '(org-agenda-files (quote ("~/Dropbox/diverse/org/gcal.org" "~/2.org"))))
+ '(org-agenda-files (quote ("~/Dropbox/diverse/org/gcal.org")))
+ '(package-selected-packages (quote (auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -317,3 +318,9 @@
 (package-initialize)
 
 (savehist-mode 1)
+
+;; autocomplete package 
+;; M-x package-install [RET] auto-complete [RET]
+(ac-config-default)
+
+

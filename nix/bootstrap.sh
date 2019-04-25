@@ -22,6 +22,9 @@ BASEDIR="$(cd "$SCRIPT_INDIRECT" ; pwd -P)"
 for f in $(find "$BASEDIR" -type f -printf "%P\n"); do
     DIR="$(dirname "$f")"
     FILE="$(basename "$f")"
+
+    [ $FILE = $(basename $0) ] && continue
+
     if [ $DIR = '.' ]; then 
 	BASEFILE="$HOME/$FILE"
 	SRCFILE="$BASEDIR/$FILE"
@@ -71,3 +74,22 @@ for i in ~/.*; do
         rm "$i"
     fi
 done
+
+exit 0
+# X11 keys remapping
+xkbcomp -xkb $DISPLAY xkbmap
+#chenge these lines in xkbmap 
+# caps lock behaves as shift 
+    key <CAPS> {         [       Shift_L ] };
+    modifier_map Shift { <CAPS> };
+# disable power key on 
+    key <POWR> {         [    XF86PowerOff ] };
+    key <POWR> {         [    Delete ] };
+# disable sleep key 
+    key <I150> {         [    XF86Sleep ] };
+    key <I150> {         [       Up ] }; 
+                                      
+
+
+xkbcomp -w 0 xkbmap $DISPLAY
+
