@@ -58,7 +58,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
     alias diff='diff --color=auto'
-    alias less='vi -R -'
+#    alias less='vi -R -'
 fi
 
 # some more ls aliases
@@ -119,5 +119,5 @@ pwait() {
 
 which xsel > /dev/null  && alias pbcopy='xsel --clipboard --input' && alias pbpaste='xsel --clipboard --output'
 
-
+export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools/
 
