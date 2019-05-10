@@ -322,5 +322,6 @@
 ;; autocomplete package 
 ;; M-x package-install [RET] auto-complete [RET]
 (ac-config-default)
+(setq column-number-mode t)
 
 

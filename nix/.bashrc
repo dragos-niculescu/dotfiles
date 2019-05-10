@@ -119,5 +119,5 @@ pwait() {
 
 which xsel > /dev/null  && alias pbcopy='xsel --clipboard --input' && alias pbpaste='xsel --clipboard --output'
 
-export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools/
+export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools:/opt/bin
 
