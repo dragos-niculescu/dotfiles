@@ -41,6 +41,14 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#
+
+#
+# move focused workspace between monitors
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
+bindsym $mod+Ctrl+m move workspace to output DVI-I-1 VGA-0
+
 
 # change focus
 bindsym $mod+j focus left
@@ -125,11 +133,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym Control+Mod1+t exec "x-terminal-emulator"
 #bindsym Control+Mod1+l exec "sudo pm-suspend"
-bindsym Control+Mod1+l exec "systemctl suspend"
+bindsym Control+Mod1+l exec "sudo systemctl suspend"
 
-exec_always --no-startup-id xautolock -time 10 -locker "systemctl suspend"
+exec_always --no-startup-id xautolock -time 30 -locker "sudo systemctl suspend"
 exec_always --no-startup-id dropbox start 
 exec_always --no-startup-id setxkbmap ro 
+exec_always --no-startup-id xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DVI-I-1 --mode 1920x1080 --pos 1080x0 --rotate left
+#fake-outputs 3840x1200+0+0
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

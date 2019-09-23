@@ -11,7 +11,7 @@ define go
 end
 
 
-# source ~/bin/peda/peda.py
+#source ~/bin/peda/peda.py
 
 source ~/.gdb-dashboard
 #dashboard examples
