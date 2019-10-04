@@ -43,9 +43,9 @@ shopt -s checkwinsize
 #if [ -n "$force_color_prompt" ]; then
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
     #    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='\[\e]0;@\h:\w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\$\[\033[00m\] '
+    PS1='\[\e]0;@\h:\W\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\$\[\033[00m\] '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 fi
 
 
@@ -119,5 +119,12 @@ pwait() {
 
 which xsel > /dev/null  && alias pbcopy='xsel --clipboard --input' && alias pbpaste='xsel --clipboard --output'
 
+<<<<<<< Updated upstream
 export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools:/opt/bin
+=======
+export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools/:/opt/bin
+source $HOME/.cargo/env
+
+
+>>>>>>> Stashed changes
 

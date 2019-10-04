@@ -249,7 +249,7 @@
  '(inferior-octave-program "octave-cli")
  '(inhibit-startup-screen t)
  '(org-agenda-files (quote ("~/Dropbox/diverse/org/gcal.org")))
- '(package-selected-packages (quote (auto-complete))))
+ '(package-selected-packages (quote (racer rust-mode auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
