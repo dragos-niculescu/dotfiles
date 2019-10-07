@@ -119,12 +119,8 @@ pwait() {
 
 which xsel > /dev/null  && alias pbcopy='xsel --clipboard --input' && alias pbpaste='xsel --clipboard --output'
 
-<<<<<<< Updated upstream
-export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools:/opt/bin
-=======
 export PATH=$PATH:~/bin:/opt/Android/sdk/platform-tools/:/opt/bin
 source $HOME/.cargo/env
 
 
->>>>>>> Stashed changes
 
