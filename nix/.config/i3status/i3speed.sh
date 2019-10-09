@@ -16,12 +16,13 @@ path="/dev/shm/measure-net-speed"
 # If you have more (or less) than two adapters, simply adjust the script here
 # and in the next block.
 #neth0="/sys/devices/pci0000:00/0000:00:19.0/net/eth0/statistics"
-eno1="/sys/devices/pci0000:00/0000:00:19.0/net/eno1/statistics"
-wlan0="/sys/devices/pci0000:00/0000:00:1c.0/0000:01:00.0/net/wlp1s0/statistics"
+iface=$(ip ro | grep 'default' | awk '{print $5}')
+eno1=$(find   /sys/devices/pci0000:00/ -name $iface | head -n1)
+#wlan0="/sys/devices/pci0000:00/0000:00:1c.0/0000:01:00.0/net/wlp1s0/statistics"
 #read eth0_rx < "${eth0}/rx_bytes"
 #read eth0_tx < "${eth0}/tx_bytes"
-read eno1_rx < "${eno1}/rx_bytes"
-read eno1_tx < "${eno1}/tx_bytes"
+read eno1_rx < "${eno1}/statistics/rx_bytes"
+read eno1_tx < "${eno1}/statistics/tx_bytes"
 
 # get time and sum of rx/tx for combined display
 time=$(date +%s)

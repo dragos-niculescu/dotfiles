@@ -121,17 +121,20 @@ bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+#bindsym $mod+Shift+9 move container to workspace 9
+#bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+m exec "xcalib -i -a"
+bindsym $mod+Shift+p exec "echo $PATH"
+bindsym $mod+Shift+9 exec "xrandr-invert-colors -s 0"
+bindsym $mod+Shift+0 exec "xrandr-invert-colors -s 1"
+bindsym $mod+Shift+m exec "xcalib -i -a"
 bindsym Control+Mod1+t exec "x-terminal-emulator"
 #bindsym Control+Mod1+l exec "sudo pm-suspend"
 bindsym Control+Mod1+l exec "sudo systemctl suspend"
@@ -142,12 +145,9 @@ exec_always --no-startup-id setxkbmap ro
 exec_always --no-startup-id xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DVI-I-1 --mode 1920x1080 --pos 1080x0 --rotate left
 #fake-outputs 3840x1200+0+0
 
-<<<<<<< Updated upstream
-=======
 exec_always --no-startup-id xautolock -time 10 -locker "systemctl suspend"
 exec_always --no-startup-id xrandr --output DP-1 --right-of DVI-I-1 --rotate left
 exec_always --no-startup-id setxkbmap ro
->>>>>>> Stashed changes
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
