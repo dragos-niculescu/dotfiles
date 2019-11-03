@@ -1,4 +1,5 @@
 set disassembly-flavor intel
+set confirm off
 set history save on
 
 define go
@@ -11,9 +12,9 @@ define go
 end
 
 
-#source ~/bin/peda/peda.py
+source ~/.gdb-dashboard
 
-#source ~/.gdb-dashboard
+#source ~/bin/peda/peda.py
 #dashboard examples
 #dashboard stackmemory  watch $ebp-20 40
 #dashboard stackmemory -output /dev/pts/7

@@ -12,6 +12,7 @@ import struct
 import termios
 import traceback
 import math
+import json 
 
 # Common attributes ------------------------------------------------------------
 
@@ -258,7 +259,7 @@ class Dashboard(gdb.Command):
         if self.is_running() and not self.output:
             width = Dashboard.get_term_width()
             gdb.write(Dashboard.clear_screen())
-            gdb.write(divider(width, 'Output/messages', True))
+            gdb.write(divider(width, 'Output/Messages', True))
             gdb.write('\n')
             gdb.flush()
 
@@ -467,13 +468,16 @@ class Dashboard(gdb.Command):
     def get_modules():
         # scan the scope for modules
         modules = []
+        iocla_avoid = ["Threads", "History", "Memory", "Expressions", "Stack"]
         for name in globals():
             obj = globals()[name]
             try:
                 if issubclass(obj, Dashboard.Module):
-                    modules.append(obj)
+                    if name not in iocla_avoid: 
+                        modules.append(obj)
             except TypeError:
                 continue
+        gdb.flush()
         # sort modules alphabetically
         modules.sort(key=lambda x: x.__name__)
         return modules
@@ -1074,7 +1078,7 @@ instructions constituting the current statement are marked, if available."""
         return {
             'context': {
                 'doc': 'Number of context instructions.',
-                'default': 3,
+                'default': 8,
                 'type': int,
                 'check': check_ge_zero
             },
@@ -1502,7 +1506,7 @@ class StackMemory(Dashboard.Module):
                 'doc': 'Clear all the watched regions.'
             }
         }
-
+    
     
 class Registers(Dashboard.Module):
     """Show the CPU registers and their values."""
