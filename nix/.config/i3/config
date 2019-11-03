@@ -136,8 +136,13 @@ bindsym $mod+Shift+9 exec "xrandr-invert-colors -s 0"
 bindsym $mod+Shift+0 exec "xrandr-invert-colors -s 1"
 bindsym $mod+Shift+m exec "xcalib -i -a"
 bindsym Control+Mod1+t exec "x-terminal-emulator"
+bindsym $mod+Shift+m exec "xcalib -i -a"
+bindsym $mod+Shift+9 exec "xrandr-invert-colors -s 0"
+bindsym $mod+Shift+0 exec "xrandr-invert-colors -s 1"
+
 #bindsym Control+Mod1+l exec "sudo pm-suspend"
 bindsym Control+Mod1+l exec "sudo systemctl suspend"
+bindsym $mod+Shift+s exec "xfce4-screenshoter"
 
 exec_always --no-startup-id xautolock -time 30 -locker "sudo systemctl suspend"
 exec_always --no-startup-id dropbox start 
