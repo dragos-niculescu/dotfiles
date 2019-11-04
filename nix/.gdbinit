@@ -13,7 +13,7 @@ end
 
 #source ~/bin/peda/peda.py
 
-#source ~/.gdb-dashboard
+source ~/.gdb-dashboard
 #dashboard examples
 #dashboard stackmemory  watch $ebp-20 40
 #dashboard stackmemory -output /dev/pts/7

@@ -245,9 +245,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
- '(display-time-mode t)
+ '(global-display-line-numbers-mode t)
  '(inferior-octave-program "octave-cli")
  '(inhibit-startup-screen t)
  '(org-agenda-files (quote ("~/Dropbox/diverse/org/gcal.org")))
@@ -257,7 +259,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "cornsilk3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 80 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "cornsilk3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 128 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
 
 (set-fill-column 100)
 
@@ -285,7 +287,7 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key (kbd "C-c c")
        'org-capture)
-
+ 
 (setq org-capture-templates
       '(("a" "Appointment" entry (file  "~/Dropbox/diverse/org/gcal.org" "Appointments")
 	 "* TODO %?\n:PROPERTIES:\n\n:END:\nDEADLINE: %^T \n %i\n")
