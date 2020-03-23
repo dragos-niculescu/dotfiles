@@ -94,6 +94,13 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+
+for_window [class="pavucontrol" ] floating enable
+for_window [class="Pavucontrol" ] floating enable
+# browser pop-ups
+for_window [window_role="pop-up"] floating enable
+
+
 # focus the parent container
 bindsym $mod+a focus parent
 
@@ -137,6 +144,12 @@ bindsym $mod+Shift+m exec "xcalib -i -a"
 bindsym $mod+Shift+9 exec "xrandr-invert-colors -s 0"
 bindsym $mod+Shift+0 exec "xrandr-invert-colors -s 1"
 
+
+bindsym $mod+KP_Plus exec "pactl set-sink-volume 0  '+10%'"
+bindsym $mod+KP_Minus exec "pactl set-sink-volume 0  '-10%'"
+
+
+
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
@@ -151,11 +164,9 @@ bindsym $mod+Shift+s exec "xfce4-screenshoter"
 exec_always --no-startup-id xautolock -time 30 -locker "sudo systemctl suspend"
 exec_always --no-startup-id dropbox start 
 exec_always --no-startup-id setxkbmap ro 
-#corect dor?
-#exec_always --no-startup-id xrandr --output VGA-1 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DVI-I-1 --mode 1920x1080 --pos 1080x0 --rotate left
-#corect zor:
-exec_always --no-startup-id xrandr --output DVI-I-1 --primary --pos 0x0 --mode 1920x1200 --rotate normal --output DP-1 --pos 1920x0 --rotate left
-
+exec_always --no-startup-id xscreensaver -nosplash & 
+#exec_always --no-startup-id xrandr --output VGA-0 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DVI-I-1 --mode 1920x1080 --pos 1080x0 --rotate left
+exec_always --no-startup-id xrandr --output VGA-0 --primary --mode 1920x1080 --pos 0x0 --rotate left --output DVI-I-1 --mode 1920x1080 --pos 1080x0 --rotate normal
 #fake-outputs 3840x1200+0+0
 
 exec_always --no-startup-id xautolock -time 10 -locker "systemctl suspend"
