@@ -249,6 +249,7 @@
    ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#e090d7" "#8cc4ff" "#eeeeec"])
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
+ '(display-time-mode t)
  '(global-display-line-numbers-mode t)
  '(inferior-octave-program "octave-cli")
  '(inhibit-startup-screen t)
@@ -259,7 +260,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "cornsilk3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 76 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
+ '(default ((t (:inherit nil :stipple nil :background "black" :foreground "cornsilk3" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight bold :height 113 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
 
 (set-fill-column 100)
 
